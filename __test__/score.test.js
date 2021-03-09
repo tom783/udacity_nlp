@@ -1,20 +1,20 @@
-import { score } from "../src/client/js/formHandler";
+import { checkScore } from "../src/client/js/formHandler";
 
 describe("test score function", () => {
   test("test", () => {
-    const score_tag = "P+" || "P";
-    expect(score(score_tag)).toBe("긍정적");
+    const score = "P+" || "P";
+    expect(checkScore(score)).toBe("긍정적");
   });
   test("test", () => {
-    const score_tag = "N+" || "N";
-    expect(score(score_tag)).toBe("부정적");
+    const score = "N+" || "N";
+    expect(checkScore(score)).toBe("부정적");
   });
   test("test", () => {
-    const score_tag = "NEU";
-    expect(score(score_tag)).toBe("중립");
+    const score = "NEU";
+    expect(checkScore(score)).toBe("중립");
   });
   test("test", () => {
-    const score_tag = "NONE";
-    expect(score(score_tag)).toBe("미확인");
+    const score = "NONE";
+    expect(checkScore(score)).toBe("미확인");
   });
 });

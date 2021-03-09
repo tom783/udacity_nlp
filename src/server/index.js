@@ -33,7 +33,7 @@ app.get("/test", function (req, res) {
   res.send(mockAPIResponse);
 });
 
-app.post("/article", async (req, res) => {
+app.post("/apiCall", async (req, res) => {
   const apiData = await fetch(
     `${apiUrl}${apiKey}&lang=auto&url=${req.body.formUrl}`,
     {

@@ -1,10 +1,10 @@
-function handleSubmit(event) {
+export function handleSubmit(event) {
   event.preventDefault();
 
-  let formUrl = document.getElementById("urlInput").value;
+  const formUrl = document.getElementById("urlInput").value;
   const errorMessage = document.getElementById("errorMessage");
   if (Client.checkUrl(formUrl)) {
-    fetch("http://localhost:8080/article", {
+    fetch("http://localhost:8080/apiCall", {
       method: "POST",
       cache: "no-cache",
       credentials: "same-origin",
@@ -15,24 +15,27 @@ function handleSubmit(event) {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        document.querySelector(
-          "#result_output"
+        errorMessage.innerText = null;
+        document.getElementById(
+          "result_output"
         ).innerText = `신뢰도 : ${res.confidence}%`;
-        document.querySelector(
-          "#subjectivity_output"
+        document.getElementById(
+          "subjectivity_output"
         ).innerText = `주관 : ${res.subjectivity}`;
-        document.querySelector("#score_output").innerText = `점수 : ${score(
-          res.score_tag
-        )}`;
+        document.getElementById(
+          "score_output"
+        ).innerText = `점수 : ${checkScore(res.score_tag)}`;
       });
   } else {
-    console.log(errorMessage, "invalid url");
+    errorMessage.innerText = "Check url";
+    document.getElementById("result_output").innerText = null;
+    document.getElementById("subjectivity_output").innerText = null;
+    document.getElementById("score_output").innerText = null;
   }
 }
 
-export const score = (score_tag) => {
-  switch (score_tag) {
+export const checkScore = (value) => {
+  switch (value) {
     case "P+":
     case "P":
       return "긍정적";
@@ -45,5 +48,3 @@ export const score = (score_tag) => {
       return "미확인";
   }
 };
-
-export { handleSubmit };
