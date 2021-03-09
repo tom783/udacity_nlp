@@ -15,11 +15,11 @@
         <form class="" id="submit" onsubmit="return Client.handleSubmit(event)">
           <input
             class="user_input"
-            id="urlInput"
+            id="textInput"
             type="text"
             name="input"
             value=""
-            placeholder="input URL"
+            placeholder="input text"
           />
           <input
             class="btn"
@@ -34,6 +34,8 @@
       </section>
       <section class="result_section">
         <h3>Results:</h3>
+        <div class="analysis_text" id="analysis_text"></div>
+        <div class="apply_model" id="apply_model"></div>
         <div class="results" id="result_output"></div>
         <div class="subjectivity" id="subjectivity_output"></div>
         <div class="score" id="score_output"></div>

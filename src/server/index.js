@@ -34,12 +34,11 @@ app.get("/test", function (req, res) {
 });
 
 app.post("/apiCall", async (req, res) => {
-  const apiData = await fetch(
-    `${apiUrl}${apiKey}&lang=auto&url=${req.body.formUrl}`,
-    {
-      method: "POST",
-    }
-  );
+  const url = `${apiUrl}${apiKey}&lang=auto&txt=${req.body.formText}`;
+  console.log("url", url);
+  const apiData = await fetch(url, {
+    method: "POST",
+  });
 
   try {
     const data = await apiData.json();
