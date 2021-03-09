@@ -34,6 +34,8 @@ export function handleSubmit(event) {
       });
   } else {
     errorMessage.innerText = "Input text";
+    document.getElementById("analysis_text").innerText = null;
+    document.getElementById("apply_model").innerText = null;
     document.getElementById("result_output").innerText = null;
     document.getElementById("subjectivity_output").innerText = null;
     document.getElementById("score_output").innerText = null;
